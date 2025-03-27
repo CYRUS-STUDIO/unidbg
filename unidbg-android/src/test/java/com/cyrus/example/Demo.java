@@ -42,7 +42,11 @@ public class Demo {
 
         // 调用 string_length 方法
         result = module.callFunction(emulator, "string_length", "abc");
-        System.out.println(result.intValue());
+        System.out.println("callFunction string_length reuslt: " + result.intValue());
+
+        // 通过地址调用 string_length 方法
+        result = module.callFunction(emulator, 0x25ED0, "CYRUS STUDIO");
+        System.out.println("callFunction string_length by offset reuslt: " + result.intValue());
 
         // 使用 memory.malloc 分配 10 字节的内存并写入字符串
         MemoryBlock block = memory.malloc(10, true);
